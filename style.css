@@ -1,0 +1,210 @@
+/* --- 基礎設定 --- */
+:root {
+    --bg-color: #f5eeda; /* 奶油黃 (Cream) */
+    --primary-color: #d14942; /* 朱紅色 (Red) */
+    --secondary-color: #3b8c8c; /* 土耳其藍 (Teal) */
+    --text-color: #2c2c2c; /* 炭黑 (Charcoal) */
+    --accent-color: #e6b31e; /* 芥末黃 (Mustard) */
+    
+    /* 復古紋理 bg - 使用簡單的 CSS 顆粒感 */
+    --noise-bg: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3%3C");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Arvo', serif; /* 粗襯線體 */
+    line-height: 1.6;
+    padding: 20px;
+    position: relative;
+}
+
+/* 增加一層顆粒感紋理 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.05;
+    background-image: var(--noise-bg);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* --- 主容器 --- */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background: #fff;
+    border: 6px solid var(--text-color);
+    border-radius: 20px;
+    box-shadow: 12px 12px 0 var(--text-color); /* 強烈的硬陰影 */
+    overflow: hidden; /* 確保內容不會超出圓角 */
+}
+
+/* --- 頁首設計 (老式招牌) --- */
+.retro-header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 6px solid var(--text-color);
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border: 2px solid var(--text-color);
+    transform: rotate(15deg);
+}
+
+.retro-header .subtitle {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.retro-header h1 {
+    font-family: 'Bigelow Rules', cursive; /* 復古手寫/裝飾體 */
+    font-size: 5rem;
+    margin: 10px 0;
+    text-shadow: 4px 4px 0 var(--text-color);
+    line-height: 1;
+}
+
+.retro-header .tagline {
+    background: rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-style: italic;
+}
+
+/* --- 主要內容區 --- */
+.retro-content {
+    padding: 40px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid var(--text-color);
+    box-shadow: 5px 5px 0 var(--accent-color);
+}
+
+.bio h2 {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.dotted-hr {
+    border: none;
+    border-top: 5px dotted var(--text-color);
+    margin: 30px 0;
+}
+
+/* 技能與興趣區 */
+.details-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.box {
+    border: 4px solid var(--text-color);
+    padding: 20px;
+    background: var(--bg-color);
+}
+
+.skills-box {
+    box-shadow: 6px 6px 0 var(--secondary-color);
+}
+
+.hobbies-box {
+    box-shadow: 6px 6px 0 var(--accent-color);
+}
+
+.box h3 {
+    background-color: var(--text-color);
+    color: white;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    transform: skew(-10deg); /* 傾斜效果 */
+}
+
+.box ul {
+    list-style-type: '★ '; /* 使用星星作為清單符號 */
+    margin-left: 20px;
+}
+
+/* --- 頁尾設計 --- */
+.retro-footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-top: 6px solid var(--text-color);
+}
+
+.retro-footer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.retro-footer a {
+    color: var(--accent-color);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+.retro-footer a:hover {
+    border-bottom-color: var(--accent-color);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+/* --- 響應式設計 (手機板) --- */
+@media (max-width: 600px) {
+    .retro-header h1 { font-size: 3.5rem; }
+    .profile-section { flex-direction: column; text-align: center; }
+    .details-section { grid-template-columns: 1fr; }
+    .retro-content { padding: 20px; }
+}
